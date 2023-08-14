@@ -32,8 +32,7 @@ const Header = () => {
                 "Content-Type": "application/json",
                 "Authorization": token,
                 Accept: "application/json"
-            },
-            credentials: "include"
+            }
         });
 
         const data = await res.json();
