@@ -24,11 +24,13 @@ const Header = () => {
 
     const logoutuser = async () => {
         let token = localStorage.getItem("usersdatatoken");
+        //console.log(token)
 
         const res = await fetch("/logout", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
                 "Authorization": token,
                 Accept: "application/json"
             },
@@ -36,10 +38,10 @@ const Header = () => {
         });
 
         const data = await res.json();
-        //console.log(data);
+        console.log(data);
 
         if (data.status === 201) {
-            //console.log("use logout");
+            console.log("user logout");
             localStorage.removeItem("usersdatatoken");
             setLoginData(false)
             history("/");
@@ -61,7 +63,7 @@ const Header = () => {
             <header>
                 <nav>
 
-                    <NavLink to="/" style={{ textDecoration: "none" }}><h1>Krish Cloud</h1></NavLink>
+                    <NavLink to="/"><h1>Krish Cloud</h1></NavLink>
                     <div className="avtar">
                         {
                             logindata.ValidUserOne ? <Avatar style={{ background: "salmon", fontWeight: "bold", textTransform: "capitalize" }} onClick={handleClick}>{logindata.ValidUserOne.fname[0].toUpperCase()}</Avatar> :
@@ -69,6 +71,7 @@ const Header = () => {
                         }
 
                     </div>
+
                     <Menu
                         id="basic-menu"
                         anchorEl={anchorEl}
@@ -78,7 +81,7 @@ const Header = () => {
                             'aria-labelledby': 'basic-button',
                         }}
                     >
-                    {
+                        {
                             logindata.ValidUserOne ? (
                                 <>
                                     <MenuItem onClick={() => {
@@ -99,11 +102,13 @@ const Header = () => {
                                 </>
                             )
                         }
+
                     </Menu>
                 </nav>
             </header>
         </>
     )
 }
+
 
 export default Header
