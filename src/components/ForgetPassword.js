@@ -50,7 +50,7 @@ const ForgotPassword = () => {
                 position: "top-center"
             });
         } else {
-            const res = await fetch(`/${id}/${token}`, {
+            const res = await fetch(`${process.env.REACT_APP_API_URL}/${id}/${token}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
