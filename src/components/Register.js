@@ -76,7 +76,7 @@ const Register = () => {
             // console.log("user registration succesfully done");
 
 
-            const data = await fetch("/register", {
+            const data = await fetch(`${process.env.REACT_APP_API_URL}/register`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

@@ -16,7 +16,7 @@ const Dashboard = () => {
     const DashboardValid = async () => {
         let token = localStorage.getItem("usersdatatoken");
 
-        const res = await fetch("/validuser", {
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/validuser`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

@@ -26,11 +26,10 @@ const Header = () => {
         let token = localStorage.getItem("usersdatatoken");
         //console.log(token)
 
-        const res = await fetch("/logout", {
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/logout`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*",
                 "Authorization": token,
                 Accept: "application/json"
             },

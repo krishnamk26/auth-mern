@@ -17,7 +17,7 @@ const ForgotPassword = () => {
     const [message, setMessage] = useState("");
 
     const userValid = async () => {
-        const res = await fetch(`/forgotpassword/${id}/${token}`, {
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/forgotpassword/${id}/${token}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
